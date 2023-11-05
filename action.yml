@@ -118,6 +118,9 @@ inputs:
     description: 'Custom Keychain Name'
     required: false
     default: "ios-build.keychain"
+  custom-args:
+    description: 'Add custom args'
+    required: false
 runs:
   using: "node16"
   main: "dist/index.js"

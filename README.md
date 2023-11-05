@@ -179,6 +179,10 @@ Base64 encoded App Store Connect API Key. Default `""`.
 
 Custom keychain name. Default `ios-build.keychain`
 
+### `xcargs`
+
+Custom arguments.
+
 ## Contributions Welcome!
 
 If you have any other inputs you'd like to add, feel free to create PR.
