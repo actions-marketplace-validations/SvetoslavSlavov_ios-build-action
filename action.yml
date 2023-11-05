@@ -121,6 +121,7 @@ inputs:
   custom-args:
     description: 'Add custom args'
     required: false
+    default: ""
 runs:
   using: "node16"
   main: "dist/index.js"
