@@ -118,10 +118,22 @@ inputs:
     description: 'Custom Keychain Name'
     required: false
     default: "ios-build.keychain"
+  custom-toolchain: 
+    description: 'Custom Toolchain'
+    required: false
+    default: ""  
   custom-args:
     description: 'Add custom args'
     required: false
     default: ""
+  include_bitcode:
+    description: 'Has include bitcode'
+    required: false
+    default: ""
+  include_symbols:
+    description: 'Has include symbols'
+    required: false
+    default: ""
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"

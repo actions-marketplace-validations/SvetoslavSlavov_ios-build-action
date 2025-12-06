@@ -13,6 +13,8 @@ platform :ios do
       keychain_name = 'ios-build.keychain'
     end
 
+    ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
+
     create_keychain(
       name: keychain_name,
       password: keychain_password,
@@ -210,13 +212,16 @@ platform :ios do
         else
           nil
         end,
+      toolchain: ENV['CUSTOM_TOOLCHAIN'],
       export_method: ENV['EXPORT_METHOD'],
       export_options: use_export_options ? ENV['EXPORT_OPTIONS'] : nil,
       skip_profile_detection: use_export_options,
       sdk: use_build_sdk ? ENV['BUILD_SDK'] : nil,
       destination: use_build_destination ? ENV['BUILD_DESTINATION'] : nil,
       build_path: use_build_path ? ENV['BUILD_PATH'] : nil,
-      xcargs: xcargs ? ENV['CUSTOM_ARGS'] : nil
+      xcargs: ENV['CUSTOM_ARGS'],
+      include_bitcode: ENV['INCLUDE_BITCODE'] == 'true' ? true : false,
+      include_symbols: ENV['INCLUDE_SYMBOLS'] == 'true' ? true : false
     )
 
     delete_keychain(name: keychain_name)

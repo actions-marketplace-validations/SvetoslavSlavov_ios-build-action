@@ -43,7 +43,7 @@ You can add a single p12 key+cert file with `p12-base64 (p12-path)`, or if you h
 **Required**: Base64 encoded mobileprovision file. If you want to specify multiple files, you need to input in multiple lines and then use [`export-options`](#export-options) to specify the provisioning profile to use for each executable in your app.
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.11.0
+- uses: yukiarrr/ios-build-action@v1.12.0
   with:
     mobileprovision-base64: |
       ${{ secrets.MY_MOBILEPROVISION_BASE64 }}
@@ -59,7 +59,7 @@ Also note, when creating base64 encoded inputs, make sure they don't contain new
 **Required**: mobileprovision path. If you want to specify multiple files, you need to input in multiple lines and then use [`export-options`](#export-options) to specify the provisioning profile to use for each executable in your app.
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.11.0
+- uses: yukiarrr/ios-build-action@v1.12.0
   with:
     mobileprovision-path: |
       ios-build-1.mobileprovision
@@ -107,7 +107,7 @@ Output path of ipa. Default `"output.ipa"`.
 Targets to be updated with mobileprovision, code signing identity, etc. Split on new lines. Default `""`. (default to all targets)
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.11.0
+- uses: yukiarrr/ios-build-action@v1.12.0
   with:
     update-targets: |
       MyApp
@@ -152,10 +152,9 @@ Increment the version number of your project. Supports `"patch"`, `"minor"`, `"m
 
 Increment the build number before building the application. Default `""`.
 
- - `true` - automatically increment the project build number by one
- - `testflight` - increment the latest TestFlight build number by one. If this is specified you must also provide `bundle-identifier`, `app-store-connect-api-key-id`, `app-store-connect-api-key-issuer-id` and `app-store-connect-api-key-base64`
- - a specific build number e.g. `75`
-
+- `true` - automatically increment the project build number by one
+- `testflight` - increment the latest TestFlight build number by one. If this is specified you must also provide `bundle-identifier`, `app-store-connect-api-key-id`, `app-store-connect-api-key-issuer-id` and `app-store-connect-api-key-base64`
+- a specific build number e.g. `75`
 
 ### `bundle-identifier`
 
@@ -165,11 +164,9 @@ Application bundle identifier. Default `""`.
 
 App Store Connect API Key ID. Default `""`.
 
-
 ### `app-store-connect-api-key-issuer-id`
 
 App Store Connect API Key Issuer ID. Default `""`.
-
 
 ### `app-store-connect-api-key-base64`
 
@@ -179,9 +176,21 @@ Base64 encoded App Store Connect API Key. Default `""`.
 
 Custom keychain name. Default `ios-build.keychain`
 
-### `xcargs`
+### `custom-args`
 
 Custom arguments.
+
+### `custom-toolchain`
+
+Create a custom toolchain.
+
+### `include_bitcode`
+
+Should include bitcode
+
+### `include_symbols`
+
+Should include symbols
 
 ## Contributions Welcome!
 
@@ -194,7 +203,7 @@ Welcome your contributions!
 ### single p12
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.11.0
+- uses: yukiarrr/ios-build-action@v1.12.0
   with:
     project-path: Unity-iPhone.xcodeproj
     p12-base64: ${{ secrets.P12_BASE64 }}
@@ -207,7 +216,7 @@ Welcome your contributions!
 ### key and cert
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.11.0
+- uses: yukiarrr/ios-build-action@v1.12.0
   with:
     project-path: Unity-iPhone.xcodeproj
     p12-key-base64: ${{ secrets.P12_KEY_BASE64 }}
@@ -221,7 +230,7 @@ Welcome your contributions!
 ### custom keychain name
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.11.0
+- uses: yukiarrr/ios-build-action@v1.12.0
   with:
     custom-keychain-name: my-ios-build.keychin # or {commit-hash}-ios-build.keychain
     project-path: Unity-iPhone.xcodeproj
